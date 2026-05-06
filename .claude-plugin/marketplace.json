@@ -1,8 +1,8 @@
 {
   "name": "startupz",
   "owner": {
-    "name": "Startupz",
-    "url": "https://github.com/ivancojr"
+    "name": "Marfin LABS",
+    "url": "https://github.com/marfin-lab"
   },
   "metadata": {
     "description": "Marketplace do plugin Startupz Briefing.",
@@ -18,8 +18,8 @@
         "name": "Startupz",
         "url": "https://startupz.com.br"
       },
-      "homepage": "https://github.com/ivancojr/startupz-claude-plugin",
-      "repository": "https://github.com/ivancojr/startupz-claude-plugin",
+      "homepage": "https://github.com/marfin-lab/startupz-claude-plugin",
+      "repository": "https://github.com/marfin-lab/startupz-claude-plugin",
       "license": "MIT",
       "keywords": [
         "startupz",

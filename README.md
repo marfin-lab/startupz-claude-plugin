@@ -11,7 +11,7 @@ Todo dia de manhã, você abre o Claude e o briefing já está lá: 3 destaques 
 **Pré-requisitos:** Claude Code, `jq` (`brew install jq`).
 
 ```
-/plugin marketplace add ivancojr/startupz-claude-plugin
+/plugin marketplace add marfin-lab/startupz-claude-plugin
 /plugin install startupz-claude-plugin@startupz
 /startupz:setup
 ```
@@ -21,7 +21,7 @@ Amanhã 7h o cron gera o briefing; ao abrir o Claude Code, ele aparece automáti
 ### Cowork / Claude Code Web
 
 ```
-/plugin marketplace add ivancojr/startupz-claude-plugin
+/plugin marketplace add marfin-lab/startupz-claude-plugin
 /plugin install startupz-claude-plugin@startupz
 /startupz:morning
 ```
