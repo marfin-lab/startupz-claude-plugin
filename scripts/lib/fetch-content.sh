@@ -16,7 +16,7 @@ fetch_startupz_content() {
   case "$mode" in
     ids)
       [[ -n "$arg" ]] || { echo "[]"; return 0; }
-      filter="id=in.(${arg})"
+      filter="id=in.(${arg})&published=eq.true"
       ;;
     category)
       [[ -n "$arg" ]] || { echo "[]"; return 0; }
