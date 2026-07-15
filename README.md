@@ -36,6 +36,18 @@ Cowork não tem cron local, então `/startupz:morning` faz fetch das fontes em p
 | `/startupz:morning` | Exibe o briefing do dia. Usa o local salvo se houver, senão gera inline via WebFetch. | CLI, Cowork, Chat web |
 | `/startupz:uninstall` | Remove o cron. Mantém histórico. | Claude Code CLI (macOS) |
 
+## Inteligência sobre o acervo
+
+Pergunte no chat sobre o ecossistema e o Startupz responde a partir das matérias
+publicadas — sem comando, a skill ativa sozinha:
+
+- "quais VCs mais aparecem investindo?"
+- "que tipo de startup mais recebe investimento?"
+- "o que o Startupz publicou sobre fintech B2B?"
+
+Respostas são ancoradas nas matérias (com link) e admitem quando o acervo não
+cobre o tema. Cobertura cresce conforme novas matérias são publicadas.
+
 ## Onde funciona
 
 - **Claude Code CLI (macOS):** experiência completa — cron local 7h + briefing aparece automático ao abrir.

@@ -16,6 +16,7 @@
 - URL pública do artigo: `https://startupz.com.br/artigo/<slug>` (confirmado, retorna 200).
 - A skill invoca scripts via `${CLAUDE_PLUGIN_ROOT}` (convenção do plugin — ver `hooks/hooks.json`, `commands/setup.md`).
 - Testes: bats, helper `skip_if_no_network`, sem framework novo. Rodar com `bats tests/<arquivo>.bats`.
+- **Nomes de `@test` em ASCII puro** — bats 1.13 mangla alguns bytes UTF-8 (ex: "í" de "índice") e o teste não roda. Descrições sem acento; o corpo/lógica do teste é indiferente.
 - Skills são auto-descobertas — **não editar** `.claude-plugin/plugin.json`.
 - Tudo em PT-BR.
 
@@ -52,7 +53,7 @@ skip_if_no_network() {
   echo "$result" | jq -e 'type == "array"'
 }
 
-@test "cada item do índice tem os campos esperados quando há conteúdo" {
+@test "cada item do indice tem os campos esperados quando ha conteudo" {
   skip_if_no_network
   result=$(fetch_startupz_index)
   count=$(echo "$result" | jq 'length')
@@ -61,14 +62,14 @@ skip_if_no_network() {
   fi
 }
 
-@test "índice retorna [] em erro de rede" {
+@test "indice retorna [] em erro de rede" {
   STARTUPZ_SUPABASE_URL="https://invalid-host-xxx.example" \
     run fetch_startupz_index
   [ "$status" -eq 0 ]
   [ "$output" = "[]" ]
 }
 
-@test "índice é executável direto e imprime JSON array" {
+@test "indice executavel direto imprime JSON array" {
   skip_if_no_network
   result=$(bash scripts/lib/fetch-index.sh)
   echo "$result" | jq -e 'type == "array"'
@@ -180,7 +181,7 @@ skip_if_no_network() {
   echo "$result" | jq -e '.[0].content'
 }
 
-@test "modo inválido retorna []" {
+@test "modo invalido retorna []" {
   run fetch_startupz_content bogus x
   [ "$status" -eq 0 ]
   [ "$output" = "[]" ]
