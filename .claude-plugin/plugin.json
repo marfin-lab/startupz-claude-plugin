@@ -1,7 +1,7 @@
 {
   "name": "startupz-claude-plugin",
-  "version": "0.1.0",
-  "description": "Briefing diário do ecossistema brasileiro de startups direto no Claude Code, com Startupz como âncora editorial.",
+  "version": "0.2.0",
+  "description": "Briefing diário do ecossistema brasileiro de startups + Q&A ancorado no acervo Startupz (VCs, funding, setores), direto no Claude Code.",
   "author": {
     "name": "Startupz",
     "url": "https://startupz.com.br"
