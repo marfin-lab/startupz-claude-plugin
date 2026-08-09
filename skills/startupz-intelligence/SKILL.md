@@ -12,9 +12,18 @@ IA, modelo, Anthropic ou ferramentas.
 
 ## Procedimento (retrieval em duas passadas)
 
+Se `Bash` estiver disponível (Claude Code CLI), use os scripts. Se não (Chat web,
+Cowork), use `WebFetch`/`web_fetch` direto na REST do Supabase — mesmos dados.
+Em ambos os casos, header `apikey` = a anon key abaixo.
+
+**Base:** `https://vfntyqijlrdlgcponeez.supabase.co/rest/v1/articles`
+**apikey:** `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZmbnR5cWlqbHJkbGdjcG9uZWV6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUyNTg3NDUsImV4cCI6MjA4MDgzNDc0NX0.zyyjWLAz1yGMBIWllFHl7RfGtDDkg9y5sI_bVpnkj5o`
+
 1. **Puxe o índice leve** de todos os artigos publicados:
 
        bash "${CLAUDE_PLUGIN_ROOT}/scripts/lib/fetch-index.sh"
+       # sem Bash:
+       GET {base}?select=id,title,excerpt,category,published_at,slug&published=eq.true&order=published_at.desc
 
    Retorna JSON array com `id, title, excerpt, category, published_at, slug`.
 
@@ -27,11 +36,19 @@ IA, modelo, Anthropic ou ferramentas.
 
 3. **Puxe o content completo** só dos selecionados:
 
-       bash "${CLAUDE_PLUGIN_ROOT}/scripts/lib/fetch-content.sh" ids 1,2,3
+       # `id` é uuid — passe os uuids que vieram do índice, separados por vírgula, sem aspas
+       bash "${CLAUDE_PLUGIN_ROOT}/scripts/lib/fetch-content.sh" ids 2c7827cf-...,d468bcd9-...
        # ou, para agregações:
        bash "${CLAUDE_PLUGIN_ROOT}/scripts/lib/fetch-content.sh" category Funding
+       # sem Bash:
+       GET {base}?select=title,slug,category,published_at,content&id=in.(2c7827cf-...,d468bcd9-...)&published=eq.true&order=published_at.desc
+       GET {base}?select=title,slug,category,published_at,content&category=eq.Funding&published=eq.true&order=published_at.desc
 
    Retorna `title, slug, category, published_at, content`.
+
+   Se nenhuma das duas rotas responder, diga que o acervo está indisponível. Nunca
+   caia em outra fonte (projeto Supabase conectado, memória, web) — o acervo é essa
+   tabela e nenhuma outra.
 
 4. **Responda em PT-BR, ancorado nos artigos lidos.**
 

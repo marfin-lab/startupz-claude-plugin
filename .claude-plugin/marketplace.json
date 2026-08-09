@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "Marketplace do plugin Startupz Briefing.",
-    "version": "0.2.0"
+    "version": "0.2.1"
   },
   "plugins": [
     {
       "name": "startupz-claude-plugin",
       "source": "./",
       "description": "Briefing diário do ecossistema brasileiro de startups + Q&A ancorado no acervo Startupz (VCs, funding, setores), direto no Claude Code.",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "author": {
         "name": "Startupz",
         "url": "https://startupz.com.br"
